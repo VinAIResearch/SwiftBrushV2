@@ -1,0 +1,107 @@
+.animation-title {
+	min-height: 96px;
+	/* animation: twinkling 1s infinite ease-in-out;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	animation-iteration-count: 1; */
+}
+
+/* @keyframes twinkling {
+	0% {
+		opacity: 0.1;
+	}
+
+	20% {
+		opacity: 0.3;
+	}
+
+	50% {
+		opacity: 0.6;
+	}
+
+	75% {
+		opacity: 0.8;
+	}
+
+	100% {
+		opacity: 1;
+	}
+} */
+.animation-link:hover:after {
+	content: "";
+	display: block;
+	height: 3px;
+	background: rgb(254, 254, 0);
+	animation: animationLink 0.3s infinite ease-in-out;
+	animation-duration: 0.3s;
+	animation-fill-mode: both;
+	animation-iteration-count: 1;
+}
+
+@keyframes animationLink {
+	0% {
+		width: 30%;
+	}
+
+	100% {
+		width: 100%;
+	}
+}
+
+.image-box img:hover {
+	/* animation: animationImage 0.3s infinite ease-in-out;
+	animation-duration: 0.3s;
+	animation-fill-mode: both;
+	animation-iteration-count: 1; */
+}
+
+@keyframes animationImage {
+	0% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(1.05);
+	}
+}
+
+.title-link:hover {
+	animation: animationTitle 0.5s forwards ease-in-out;
+}
+
+@keyframes animationTitle {
+	from {
+		background: transparent;
+	}
+
+	to {
+		background: #fff;
+	}
+}
+
+/* .clickImage1{
+	animation: animationImages1 3s ease-in-out 3s infinite alternate;
+}
+
+@keyframes animationImages1 {
+	0% {
+		transform:rotateY(0deg);
+	}
+	
+	100% {
+		transform:rotateY(180deg);
+	}
+}
+.clickImage2{
+	animation: animationImages2 3s ease-in-out 3s infinite alternate;
+}
+
+@keyframes animationImages2 {
+	0% {
+		transform:rotateY(180deg);
+	}
+	
+	100% {
+		transform:rotateY(0deg);
+	}
+} */

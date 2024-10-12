@@ -1,4 +1,0 @@
-tensorflow==2.17.0
-opencv_python==4.10.0.84
-scipy==1.14.0
-tqdm==4.66.4

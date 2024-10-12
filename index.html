@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="SwiftBrush v2: Make Your One-step Diffusion Model Better Than Its Teacher"
+    />
+    <meta name="keywords" content="SwiftBrushv2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      property="og:title"
+      content="SwiftBrush v2: Make Your One-step Diffusion Model Better Than Its Teacher"
+    />
+    <meta
+      property="og:description"
+      content="SwiftBrush v2: Make Your One-step Diffusion Model Better Than Its Teacher"
+    />
+    <meta property="og:image" content="https://i.imgur.com/4mgxLiG.png" />
+    <meta property="og:url" content="https://swiftbrushv2.github.io/" />
+    <meta property="og:type" content="website" />
+    <title>
+      SwiftBrush v2: Make Your One-step Diffusion Model Better Than Its Teacher
+    </title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
+    <link rel="stylesheet" href="./static/swiper.min.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <script src="./static/swiper.min.js"></script>
+
+    <link rel="stylesheet" href="./static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./static/css/layout.css" />
+    <link rel="stylesheet" href="./static/css/animation.css" />
+    <link rel="stylesheet" href="./static/css/media.css" />
+
+    <script src="./static/js/jquery-3.5.1.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-Z1EKV7PTL0"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-Z1EKV7PTL0");
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <img style="width: 100%" src="./static/banner_v2.png" alt="" />
+      </div>
+      <!-- Title  -->
+      <div
+        class="page-title"
+        style="
+          padding: 2vh 1vw 0vh 1vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        "
+      >
+        <h1>[ECCV'24] SwiftBrush v2</h1>
+        <h2>Make Your One-step Diffusion Model Better Than Its Teacher</h2>
+      </div>
+      <!-- Author list -->
+      <div class="row">
+        <div class="col-12 link">
+          <div class="row">
+            <div class="pc-generated" style="width: 100%">
+              <div
+                class=""
+                style="display: flex; justify-content: center; width: 100%"
+              >
+                <div class="newTitlePc">
+                  <div class="title-link">
+                    <a href="https://trung-dt.com">Trung Dao<sup>1</sup></a>
+                  </div>
+                  <div class="title-link">
+                    <a href="https://thuanz123.github.io/"
+                      >Thuan Hoang Nguyen<sup>1</sup></a
+                    >
+                  </div>
+                  <div class="title-link">
+                    <a href="https://github.com/Luvata">Thanh Le<sup>1</sup></a>
+                  </div>
+                  <div class="title-link">
+                    <a href="https://www.vinai.io">Duc Vu<sup>1</sup></a>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=""
+                style="display: flex; justify-content: center; width: 100%"
+              >
+                <div class="newTitlePc">
+                  <div class="title-link">
+                    <a href="https://www.khoinguyen.org"
+                      >Khoi Nguyen<sup>1</sup></a
+                    >
+                  </div>
+                  <div class="title-link">
+                    <a href="https://sites.google.com/view/cuongpham/home"
+                      >Cuong Pham<sup>1,2</sup>
+                    </a>
+                  </div>
+                  <div class="title-link">
+                    <a
+                      href="https://scholar.google.com/citations?user=FYZ5ODQAAAAJ&hl=en"
+                      >Anh Tran<sup>1</sup>
+                    </a>
+                  </div>
+                  <div class="title-link mob-generated"></div>
+                </div>
+              </div>
+            </div>
+            <div class="newTitle mob-generated">
+              <div class="title-link">
+                <a href="https://termanteus.com">Trung Dao<sup>1</sup></a>
+              </div>
+              <div class="title-link">
+                <a href="https://thuanz123.github.io/"
+                  >Thuan Hoang Nguyen<sup>1</sup></a
+                >
+              </div>
+              <div class="title-link">
+                <a href="https://github.com/Luvata/">Thanh Le<sup>1</sup></a>
+              </div>
+              <div class="title-link">
+                <a href="https://www.vinai.io/">Duc Vu<sup>1</sup></a>
+              </div>
+              <div class="title-link">
+                <a href="https://www.khoinguyen.org/"
+                  >Khoi Nguyen<sup>1</sup></a
+                >
+              </div>
+              <div class="title-link">
+                <a href="https://sites.google.com/view/cuongpham/home"
+                  >Cuong Pham<sup>1,2</sup></a
+                >
+              </div>
+              <div class="title-link">
+                <a
+                  href="https://scholar.google.com/citations?user=FYZ5ODQAAAAJ&hl=en"
+                  style="white-space: nowrap"
+                  >Anh Tran<sup>1</sup></a
+                >
+              </div>
+              <div class="title-link mob-generated"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Company -->
+      <div
+        class="background-block row newBtnLayout"
+        style="padding-bottom: 2vh"
+      >
+        <div class="newBtnLayout-shadow">
+          <div class="col-12">
+            <div
+              class="mob-inst-text"
+              style="
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                text-align: center;
+                font-size: 30px;
+              "
+            >
+              <div class="title-link">
+                <a href="https://www.vinai.io/"><sup>1</sup>VinAI Research</a>
+              </div>
+              <div class="title-link">
+                <a href="https://english.ptit.edu.vn/"
+                  ><sup>2</sup>Posts & Telecommunications Inst. of Tech.</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="button-flex">
+            <a href="http://arxiv.org/abs/2408.14176" class="button-link">
+              <span class="icon">
+                <i class="ai ai-arxiv"></i>
+              </span>
+              <span>arXiv Paper</span>
+            </a>
+            <a
+              href="https://github.com/VinAIResearch/SwiftBrushV2"
+              class="button-link"
+            >
+              <span class="icon">
+                <i class="fas fa-sun"></i>
+                <!-- <i class="ai ai-arxiv"></i> -->
+              </span>
+              <span>Evaluation Code (coming soon)</span>
+            </a>
+            <a
+              href="https://thuanz123.github.io/swiftbrush/"
+              class="button-link"
+            >
+              <span class="icon">
+                <i class="fa fa-heart"></i>
+                <!-- <i class="ai ai-arxiv"></i> -->
+              </span>
+              <span>SwiftBrush (Original)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Abstract -->
+      <div class="background-block row mob-bottom" style="padding-bottom: 5vh">
+        <div
+          class="col-12 Abstract-box mob-col-12"
+          style="padding: 0 !important"
+        >
+          <div class="Abstract title-layout">
+            <h3 class="font-ma">Highlights</h3>
+          </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-10 mob-col-12" style="padding: 0">
+          <div class="abstract-text">
+            In this paper, we aim to enhance the performance of SwiftBrush, a prominent one-step text-to-image diffusion model, to be competitive with its multi-step Stable Diffusion counterpart. Initially, we explore the quality-diversity trade-off between SwiftBrush and SD Turbo: the former excels in image diversity, while the latter excels in image quality. This observation motivates our proposed modifications in the training methodology, including better weight initialization and efficient LoRA training. Moreover, our introduction of a novel clamped CLIP loss enhances image-text alignment and results in improved image quality. Remarkably, by combining the weights of models trained with efficient LoRA and full training, we achieve a new state-of-the-art one-step diffusion model, achieving an FID of <strong>8.14</strong> and surpassing all GAN-based and multi-step Stable Diffusion models.
+          </div>
+        </div>
+        <div class="col-1"></div>
+      </div>
+      <!-- Supp Video -->
+      <div class="background-block row mob-bottom" style="padding-bottom: 3vh">
+        <div class="col-1"></div>
+        <div
+          class="col-12 Abstract-box mob-col-12"
+          style="padding: 0 !important"
+        >
+          <div class="Abstract title-layout">
+            <h3 class="font-ma">Supplementary Video</h3>
+          </div>
+        </div>
+        <div class="col-1"></div>
+        <div
+          class="col-10 mob-col-12"
+          style="
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <video controls style="max-width: 85%; height: auto">
+            <source
+              src="./static/videos/supplementary_video.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <!-- Diversity -->
+      <div class="background-block row mob-bottom" style="padding-bottom: 3vh">
+        <div
+          class="col-12 Abstract-box mob-col-12"
+          style="padding: 0 !important"
+        >
+          <div class="Abstract title-layout">
+            <h3 class="font-ma">Qualitative Results</h3>
+          </div>
+        </div>
+        <!-- <div class="col-1"></div> -->
+        <!-- <div class="col-10 mob-col-12 abstract-text-box" style="padding: 0">
+          <div class="abstract-text">Say something</div>
+        </div>
+        <div class="col-1"></div> -->
+        <!-- <div
+          class="col-12 Abstract-box mob-col-12"
+          style="padding: 0 !important"
+        >
+          <div class="Abstract title-layout">
+            <h3 class="font-ma">4-Step Inference</h3>
+          </div>
+        </div> -->
+        <div class="col-12">
+          <div class="generated-imageBox1">
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container1">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/qual1/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/qual1/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/qual1/3.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="image-text-box">
+                  8k wallpaper of a mysterious beautiful kunoichi ninja wearing
+                  black, red, and gold jewelry in the streets of a dark snowy
+                  town in russia, by artgerm, intricate detail, trending on
+                  artstation, 8k, fluid motion, stunning shading, by wlop
+                </div>
+              </div>
+            </div>
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container2">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/div2/0.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div2/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div2/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div2/3.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="image-text-box">
+                  A architectural drawing of a new town square for Cambridge
+                  England, big traditional musuem with columns, fountain in
+                  middle, classical design, traditional design, trees
+                </div>
+              </div>
+            </div>
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container3">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/div3/0.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div3/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div3/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div3/3.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div3/4.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div3/5.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="image-text-box">
+                  A meandering river through a picturesque anime countryside, in
+                  the style of Makoto Shinkai's breathtaking landscapes, with
+                  attention to natural beauty
+                </div>
+              </div>
+            </div>
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container4">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/div4/0.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div4/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div4/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div4/3.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="image-text-box">
+                  Abstract art style, abstract painting, pulsating quasar that
+                  is sending an enormous amount of energy throughout the
+                  universe
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="generated-imageBox1">
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container5">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/div5/0.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div5/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div5/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div5/3.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div5/4.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="image-text-box">
+                  A laughing cute grey rabbit with white stripe on the head,
+                  piles of gold coins in background, colorful, Disney Picture
+                  render, photorealistic
+                </div>
+              </div>
+            </div>
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container6">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/div6/0.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div6/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div6/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div6/3.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div6/4.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div6/5.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div6/6.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div6/7.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="image-text-box">
+                  a cute kitty, (extremely detailed CG unity 8k wallpaper),
+                  professional majestic impressionism oil painting
+                </div>
+              </div>
+            </div>
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container7">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/div7/0.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div7/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div7/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div7/3.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div7/4.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="image-text-box">
+                  Photo of an elderly man from Siberia with a full beard during
+                  a cold day. The sunlight beams onto his face, emphasizing the
+                  ice that has formed from his breath in his beard. He exudes a
+                  feeling of satisfaction. Portra 800. Analog light leak.
+                </div>
+              </div>
+            </div>
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container8">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/div8/0.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div8/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div8/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div8/3.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div8/4.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div8/5.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div8/6.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div8/7.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/div8/8.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="image-text-box">
+                  Portrait of a woman looking at the camera
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Table -->
+      <div class="background-block row mob-bottom" style="padding-bottom: 3vh">
+        <div
+          class="col-12 Abstract-box mob-col-12"
+          style="padding: 0 !important"
+        >
+          <div class="Abstract title-layout">
+            <h3 class="font-ma">Quantitative Results</h3>
+          </div>
+        </div>
+        <div style="overflow-x: auto; margin: 0 auto">
+          <table style="margin: 0 auto">
+            <caption>
+              <b>Quantitative comparisons</b>
+              between our method and others on zero-shot MS COCO-2014 benchmark.
+              For multi-step SD models, we report each with the
+              <i>cfg</i>
+              that returns the best FID, e.g.,
+              <i>cfg</i>
+              = 3 for SDv1.5 and
+              <i>cfg</i>
+              = 2 for SDv2.1. We also report performance of the teacher model
+              (SDv2.1 with
+              <i>cfg</i>
+              = 4.5).
+              <sup>†</sup>
+              denotes reported numbers,
+              <sup>‡</sup>
+              denotes our rerun based on provided GitHubs. `-' denotes
+              unreported data. Ours* indicates training with additional image
+              regularization.
+            </caption>
+            <thead>
+              <tr>
+                <th style="color: white; font-weight: bold">Method</th>
+                <th style="color: white; font-weight: bold">NFEs</th>
+                <th style="color: white; font-weight: bold">FID↓</th>
+                <th style="color: white; font-weight: bold">CLIP↑</th>
+                <th style="color: white; font-weight: bold">Precision↑</th>
+                <th style="color: white; font-weight: bold">Recall↑</th>
+              </tr>
+            </thead>
+            <tbody style="border-top: 3px solid white">
+              <tr>
+                <td>StyleGAN-T<sup>†</sup></td>
+                <td>1</td>
+                <td>13.90</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>GigaGAN<sup>†</sup></td>
+                <td>1</td>
+                <td>9.09</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr style="border-top: 1px solid white">
+                <td>SDv1.5 (<i>cfg</i> = 3)<sup>†</sup></td>
+                <td>25</td>
+                <td>8.78</td>
+                <td>0.30</td>
+                <td>0.59</td>
+                <td><b>0.53</b></td>
+              </tr>
+              <tr>
+                <td>SDv2.1 (<i>cfg</i> = 2)<sup>‡</sup></td>
+                <td>25</td>
+                <td>9.64</td>
+                <td>0.31</td>
+                <td>0.57</td>
+                <td><b>0.53</b></td>
+              </tr>
+              <tr>
+                <td>SDv2.1 (<i>cfg</i> = 4.5)<sup>‡</sup></td>
+                <td>25</td>
+                <td>12.26</td>
+                <td><b>0.33</b></td>
+                <td><u>0.61</u></td>
+                <td>0.41</td>
+              </tr>
+              <tr style="border-top: 1px solid white">
+                <td>SD Turbo<sup>‡</sup></td>
+                <td>1</td>
+                <td>16.10</td>
+                <td><b>0.33</b></td>
+                <td><b>0.65</b></td>
+                <td>0.35</td>
+              </tr>
+              <tr>
+                <td>UFOGen<sup>†</sup></td>
+                <td>1</td>
+                <td>12.78</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>MD-UFOGen<sup>†</sup></td>
+                <td>1</td>
+                <td>11.67</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>HiPA<sup>†</sup></td>
+                <td>1</td>
+                <td>13.91</td>
+                <td>0.31</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>InstaFlow-0.9B<sup>‡</sup></td>
+                <td>1</td>
+                <td>13.33</td>
+                <td>0.30</td>
+                <td>0.53</td>
+                <td>0.45</td>
+              </tr>
+              <tr>
+                <td>DMD<sup>†</sup></td>
+                <td>1</td>
+                <td>11.49</td>
+                <td><u>0.32</u></td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>DMD2<sup>†</sup></td>
+                <td>1</td>
+                <td><u>8.35</u></td>
+                <td></td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>SwiftBrush</td>
+                <td>1</td>
+                <td>15.46</td>
+                <td>0.30</td>
+                <td>0.47</td>
+                <td>0.46</td>
+              </tr>
+              <tr style="border-top: 1px solid white; color: #cb9d06">
+                <td>Ours</td>
+                <td>1</td>
+                <td>8.77</td>
+                <td><u>0.32</u></td>
+                <td>0.55</td>
+                <td><b>0.53</b></td>
+              </tr>
+              <tr style="color: #cb9d06">
+                <td>Ours*</td>
+                <td>1</td>
+                <td><b>8.14</b></td>
+                <td><u>0.32</u></td>
+                <td>0.57</td>
+                <td><u>0.52</u></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Comparison -->
+      <div class="background-block row mob-bottom" style="padding-bottom: 5vh">
+        <div
+          class="col-12 Abstract-box mob-col-12"
+          style="padding: 0 !important"
+        >
+          <div class="Abstract title-layout">
+            <h3 class="font-ma">Qualitative Comparison</h3>
+          </div>
+        </div>
+        <div class="col-12">
+          <img
+            style="
+              margin-top: 1vh;
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+            "
+            src="./static/images/Comparison.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+      <!-- More qualitative -->
+      <div class="background-block row mob-bottom" style="padding-bottom: 3vh">
+        <div
+          class="col-12 Abstract-box mob-col-12"
+          style="padding: 0 !important"
+        >
+          <div class="Abstract title-layout">
+            <h3 class="font-ma">More Qualitative Results</h3>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="generated-imageBox1">
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container9">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/spam/1/0.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/1/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/1/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/1/3.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container10">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/spam/2/0.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/2/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/2/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/2/3.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container11">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/spam/3/0.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/3/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/3/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/3/3.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container12">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/spam/4/0.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/4/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/4/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/4/3.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/4/4.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="generated-imageBox1">
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container13">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/spam/5/0.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/5/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/5/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/5/3.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container14">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/spam/6/0.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/6/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/6/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/6/3.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container15">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/spam/7/0.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/7/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/7/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/7/3.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-box" style="flex: 1">
+              <div class="swiper-container swiper-container16">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage"
+                      src="./static/images/spam/8/0.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/8/1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/8/2.png"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="swiper-slide swiper-no-swiping"
+                    data-swiper-autoplay="3000"
+                  >
+                    <img
+                      class="clickImage clickImage2"
+                      src="./static/images/spam/8/3.png"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Thanks -->
+      <div class="background-block row mob-bottom" style="padding-bottom: 5vh">
+        <div
+          class="col-12 Abstract-box mob-col-12"
+          style="padding: 0 !important"
+        >
+          <div class="Abstract title-layout">
+            <h3 class="font-ma">Acknowledgement</h3>
+          </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-10 mob-col-12 abstract-text-box" style="padding: 0">
+          <div class="abstract-text">
+            We give special thank to
+            <a href="https://latent-consistency-models.github.io/"
+              >Latent Consistency Model</a
+            >'s authors for the awesome webpage. We also thank the HuggingFace
+            team for the diffusers framework.
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+    <div style="display: none; color: #dedede; font-size: 0.5em">
+      <a href="https://clustrmaps.com/site/1bzup" title="Visit tracker"
+        ><img
+          src="//www.clustrmaps.com/map_v2.png?d=1cE5b0joE7x2_3pEAhMEb8lJJj_J0Jr03EVSTNvOd78&cl=ffffff"
+      /></a>
+    </div>
+  </body>
+  <!-- <script src="./static/js/index.js"></script> -->
+  <script>
+    var swipers = [NaN];
+    for (let i = 1; i <= 16; i++) {
+      var swiperContainerClass = ".swiper-container" + i;
+      var mySwiper = new Swiper(swiperContainerClass, {
+        autoplay: {
+          disableOnInteraction: false,
+        },
+        loop: true,
+        effect: "fade",
+        delay: 3000,
+        on: {
+          click: function (swiper, s) {
+            var totalSlides = swipers[i].slides.length;
+            var nextIndex = (this.clickedIndex + 1) % totalSlides;
+            swipers[i].slideTo(nextIndex);
+          },
+        },
+      });
+      swipers.push(mySwiper);
+    }
+  </script>
+</html>
