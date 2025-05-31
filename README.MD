@@ -15,7 +15,7 @@
     &nbsp;&nbsp;
     <a href="https://thuanz123.github.io"><strong>Thuan Hoang Nguyen</strong></a>
     &nbsp;&nbsp;
-    <a href="https://github.com/Luvata"><strong>Thanh Le</strong></a>
+    <a href="https://luvata.github.io/"><strong>Thanh Le</strong></a>
     &nbsp;&nbsp;
     <a href="https://www.vinai.io"><strong>Duc Vu</strong></a>
   </p>
